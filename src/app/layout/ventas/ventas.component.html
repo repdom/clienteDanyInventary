@@ -1,0 +1,51 @@
+<mat-card>
+  <mat-card-header>
+      <mat-card-title>Venta</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+      <div class="mb-20" fxLayout.lt-md="column" fxFlex fxLayoutGap="50px">
+        <!--<div div fxLayout="row">
+            <mat-form-field class="margear-datepickers">
+                <input matInput [matDatepicker]="pickerInicio" [min]="fechaActual" [(ngModel)]="nuevoCalendario.inicioCalendario" placeholder="Fecha de inicio" disabled>
+                <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+                <mat-datepicker #pickerInicio disabled="false"></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="margear-datepickers">
+                <input matInput [matDatepicker]="pickerFinalizacion" [min]="nuevoCalendario.inicioCalendario" [(ngModel)]="nuevoCalendario.finCalendario" placeholder="Fecha de finalización" disabled>
+                <mat-datepicker-toggle matSuffix [for]="pickerFinalizacion"></mat-datepicker-toggle>
+                <mat-datepicker #pickerFinalizacion disabled="false"></mat-datepicker>
+            </mat-form-field>             
+        </div>-->
+        <div div fxLayout="row">
+          <mat-form-field style="width: 100%;">
+            <input type="text" placeholder="Articulo" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let option of articulos" [value]="option.descripcion">
+                {{option.descripcion}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <input type="number" placeholder="Precio" aria-label="Number" matInput>
+        </div>
+        <div div fxLayout="row">
+            <mat-form-field>
+                <mat-select placeholder="" name="area">
+                  <mat-option>
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Unidad" name="unidad">
+                  <mat-option>
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>                          
+        </div>
+      </div>
+  </mat-card-content>
+  <mat-card-actions>
+      <button class="boton-amarillo" mat-button (click)="agregarCalendario()">Vender</button>
+      <!--<button class="boton-amarillo" mat-button *ngIf="actualizar" (click)="actualizarCalendario()">Actualizar</button>-->
+      <button class="boton-rojo" mat-button (click)="cancelar()">Cancelar</button>  
+  </mat-card-actions>
+</mat-card>

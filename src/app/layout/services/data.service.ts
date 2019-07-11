@@ -63,6 +63,17 @@ export class DataService {
       );
   }
 
+  updateWithPut(resourse) {
+    const headers = new Headers({ 'Accept': 'application/json', 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    console.log(resourse);
+    return this.http.put(this.url + '/' + resourse.codigo, JSON.stringify(resourse), options)
+      .pipe(
+        map(response => response.json()),
+        catchError(this.handlerError)
+      );
+  }
+
   count() {
     const headers = new Headers({ 'Accept': 'application/json', 'Content-Type': 'application/json'});
     const options = new RequestOptions({ headers: headers });

@@ -17,34 +17,36 @@
             </mat-form-field>             
         </div>-->
         <div div fxLayout="row">
-          <mat-form-field style="width: 100%;">
-            <input type="text" placeholder="Articulo" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let option of articulos" [value]="option.descripcion">
-                {{option.descripcion}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
-          <input type="number" placeholder="Precio" aria-label="Number" matInput>
+          <mat-form-field style="width: 100%;" placeholder="Articulo">
+            <mat-select [(ngModel)]="articuloSeleccionado" name="food">
+                <mat-option *ngFor="let articulo of articulos" [value]="articulo">
+                  {{articulo.descripcion}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
         </div>
         <div div fxLayout="row">
             <mat-form-field>
-                <mat-select placeholder="" name="area">
-                  <mat-option>
+                <mat-select placeholder="Almacen" name="almacen" [(ngModel)]="almacenVenta">
+                  <mat-option *ngFor="let alm of articuloSeleccionado.almacen" [value]="alm">
+                    {{alm.codigoAlmacen}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
               <mat-form-field>
-                <mat-select placeholder="Unidad" name="unidad">
-                  <mat-option>
-                  </mat-option>
-                </mat-select>
-            </mat-form-field>                          
+                <input type="text" placeholder="Unidad" [value]="articuloSeleccionado.unidadCompra" disabled="true" aria-label="Number" matInput>
+              </mat-form-field>
+              <mat-form-field *ngIf="almacenVenta">
+                <input type="number" placeholder="Balance Actual" [value]="almacenVenta.balanceActual" disabled="true" aria-label="Number" matInput>
+              </mat-form-field>
+              <mat-form-field *ngIf="almacenVenta">
+                <input type="number" placeholder="Salida de Inventario" [max]="almacenVenta.balanceActual" [min]="1" [(ngModel)]="ventaEnAlmacen.balanceActual" aria-label="Number" matInput>
+              </mat-form-field>                                                       
         </div>
       </div>
   </mat-card-content>
   <mat-card-actions>
-      <button class="boton-amarillo" mat-button (click)="agregarCalendario()">Vender</button>
+      <button class="boton-amarillo" mat-button (click)="agregarVenta()">Vender</button>
       <!--<button class="boton-amarillo" mat-button *ngIf="actualizar" (click)="actualizarCalendario()">Actualizar</button>-->
       <button class="boton-rojo" mat-button (click)="cancelar()">Cancelar</button>  
   </mat-card-actions>

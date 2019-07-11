@@ -15,6 +15,7 @@ import { VentasComponent } from './ventas.component';
 import { FormsModule, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { ArticulosService } from '../services/articulos/articulos.service';
+import { MovimientoInventarioService } from '../services/articulos/movimiento-inventario.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ArticulosService } from '../services/articulos/articulos.service';
     ReactiveFormsModule,
   ],
   providers: [
-    ArticulosService
+    ArticulosService,
+    MovimientoInventarioService
   ]
 })
 export class VentasModule { }

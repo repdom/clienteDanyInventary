@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -5,6 +6,7 @@ import { LayoutComponent } from './layout.component';
 import { Screen1Component } from './screen1/screen1.component';
 import { Screen2Component } from './screen2/screen2.component';
 import { VentasComponent } from './ventas/ventas.component';
+import {OrdenComponent} from './orden/orden.component'
 
 const routes: Routes = [
     {
@@ -22,6 +24,10 @@ const routes: Routes = [
             {
                 path: 'venta',
                 component: VentasComponent
+            },
+            {
+                path: 'orden',
+                component: OrdenComponent
             }
         ]
     }

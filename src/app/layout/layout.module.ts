@@ -1,3 +1,4 @@
+import { OrdenModule } from './orden/orden.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import {
@@ -19,6 +20,7 @@ import { Screen2Component } from './screen2/screen2.component';
 import { VentasComponent } from './ventas/ventas.component';
 import { MatCardModule } from '@angular/material';
 import { VentasModule } from './ventas/ventas.module';
+import { OrdenComponent } from './orden/orden.component';
 
 @NgModule({
     imports: [
@@ -33,7 +35,8 @@ import { VentasModule } from './ventas/ventas.module';
         MatListModule,
         TranslateModule,
         MatCardModule,
-        VentasModule
+        VentasModule,
+        OrdenModule
     ],
     declarations: [Screen2Component, LayoutComponent, NavComponent, TopnavComponent, SidebarComponent, ]
 
